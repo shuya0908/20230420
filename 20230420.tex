@@ -16,6 +16,21 @@
 \setcounter{subsection}{1}
 \subsection{Brownian Motion and Harmonic Functions}
 
+Prop. 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が存在すれば，それは確率論的(probabilistic)な式 $u(x)=E_x[g(B_T)]$ で与えられることがわかる．
+一方，$\partial D$ 上の（有界可測）関数 $g$ の選び方によらず，(ii)より確率論的な式は $D$ 上調和的な関数 $u$ を生み出すことがわかる．
+たとえ $g$ に連続性が仮定されたとしても，関数 $u$ が境界条件 $g$ を満たすことは明らかではなく，また一般的に $g$ の連続性は不要（Exercise 7.24, 7.25参照，解をもたないDirichlet問題の例）．
 
+\begin{df*}
+    $y\in\partial D$ とする．
+    
+    $D$ が $y$ における\textbf{外部円錐条件 (exterior cone condition, ECC)}を満たす
+    $\darrow$
+    \begin{itemize}
+        \item $\Exists \mathcal{C}$：頂点 $y$ の開円錐（$\mathcal{C}\neq\0$）
+        \item $\Exists r>0$ s.t. $\mathcal{C}\cap B_r(y)\subset D^c$
+    \end{itemize}
+
+    例えば凸領域は境界に含まれる任意の点において(ECC)を満たす．
+\end{df*}
 
 \end{document}
