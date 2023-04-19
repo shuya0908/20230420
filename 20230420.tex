@@ -76,7 +76,40 @@ Prop. 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が存在
         \end{align}
     \end{screen}
 
-    
+    $\Forall F\subset \real^d$（開集合）に対し $T_F:=\set{t\ge0}{B_t\in F}$ と定める．
+    このとき $\{T_{\mathcal{C}(u, \gamma/2)}=0\}=\bigcap_{s>0}\UB{\{T_{\mathcal{C}(u, \gamma/2)}<s\}}{\in\clf_s\text{ by Prop. 3.9(i)}}\in\clf_{0+}$ に注意すると，Blumenthalの0-1法則より
+    \begin{align}
+        P_0(T_{\mathcal{C}(u, \gamma/2)}=0)
+        &= \lim_{s\downarrow0}P_0(T_{\mathcal{C}(u, \gamma/2)}<s) \\
+        &\ge \lim_{s\downarrow0}P_0(B_s\in\mathcal{C}(u, \gamma/2)) > 0.
+    \end{align}
+    \begin{gather}
+        \therefore 
+        P_0(T_{\mathcal{C}(u, \gamma/2)}=0) = 1.
+    \end{gather}
+
+    これとサンプルパスの連続性より $P_0(T_{\mathcal{C}'}=0) = 1$ なので $T_{\mathcal{C}'}=0, P_0$-a.s.\nazo
+
+    一方 $\Forall a\in(0, r/2)$ に対し
+    \begin{align}
+        \mathcal{C}'_a
+        := \set{z\in\mathcal{C}'}{\abs{z}>a}
+        = \mathcal{C}'\setminus \bar{\mathcal{B}_{a}}
+        (\subset \mathcal{C}')
+    \end{align}
+    と定める．
+    定め方より $a\downarrow0$ とすると $\mathcal{C}'_a\uparrow\mathcal{C}'\implies T_{\mathcal{C}'_a}\downarrow T_{\mathcal{C}'}=0, P_0$-a.s.（対象の集合が大きくなると，より小さな時間で到達するイメージ）
+
+    ゆえに 
+    \begin{align}
+        \Forall \eta>0, \Exists \alpha>0\text{ s.t. }
+        & a<\alpha\implies P_0(T_{\mathcal{C}'_a}\le\eta)=1 \\
+        \implies 
+        \Forall \beta>0, \Forall \eta>0, \Exists \alpha>0\text{ s.t. }
+        & a<\alpha\implies P_0(T_{\mathcal{C}'_a}\le\eta)\ge1-\beta.
+    \end{align}
+
+    この $a$ を固定する．
 \end{proof}
 
 
