@@ -38,7 +38,7 @@ Prop. 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が存在
 
 \setcounter{thm}{8}
 \begin{shadebox}
-    \begin{lem}~
+    \begin{lem}\label{thm:709}~
         \begin{itemize}
             \item $D\subset \real^d$：$\Forall y\in\partial D$ において(ECC)を満たす有界領域
             \item $T=\inf\set{t\ge0}{B_t\notin D}$
@@ -120,7 +120,7 @@ Prop. 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が存在
         \item
         $\lim_{x\to y, x\in D}(y-x+\mathcal{C})\supset \mathcal{C}'_a\implies T_{y-x+\mathcal{C}}\le T_{\mathcal{C}'_a}$
     \end{itemize}
-     より $\abs{y-x}$ を十分小さくとると，$\Forall \eta>0$ に対し
+     より $\Forall x\in D$ に対し $\abs{y-x}$ を十分小さくとると，$\Forall \eta>0$ に対し
      \begin{align}
          P_x(T\le\eta)
          &\ge P_x(T_{y+\mathcal{C}}\le\eta) \\
@@ -167,7 +167,7 @@ Prop. 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が存在
         $\Exists M>0$ s.t. $\sup_{z\in\partial D}\abs{g(z)}\le M.$
     \end{itemize}
 
-    $\implies \Forall \eta>0$ に対し
+    $\implies\Forall x\in D$ に対し $\abs{y-x}<\alpha(\in(0,\delta/2])$ とすると $\Forall \eta>0$ に対し
     \begin{align}
         \abs{u(x)-g(y)}
         &= \abs{E_x[g(B_T)-g(y)]} \\
@@ -184,9 +184,43 @@ Prop. 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が存在
             E_x[\abs{g(B_T)-g(y)}\bm{1}_{\{T\le\eta\}\cap\{\sup_{t\le\eta}\abs{B_t-x}\le\delta/2\}}] \\
             + 2MP_x(\sup_{t\le\eta}\abs{B_t-x}>\delta/2)
             + 2MP_x(T>\eta)
-            =: A_1+A_2+A_3.
-        \end{multlined}
+        \end{multlined}\\
+        &=: A_1+A_2+A_3
+        < \ep/3 + \ep/3 + \ep/3 < \ep.
     \end{align}
+
+    \begin{screen}
+        $\because)$
+        \begin{enumerate}[label=(\roman*)]
+            \item 
+            事象
+            $$
+            \{T\le\eta\}\cap\{\sup_{t\le\eta}\abs{B_t-x}\le\delta/2\}
+            $$
+            の上では
+            \begin{align}
+                \abs{B_T-y}
+                &\le \abs{B_T-x}+\abs{y-x} \\
+                &\le \sup_{t\le\eta}\abs{B_t-x}+\alpha \\
+                &\le \delta/2+\delta/2
+                =\delta
+            \end{align}
+            が成り立つので，$\delta$ の選び方より $A_1\le\ep/3.$
+            \item
+            BMの平行移動不変性より
+            \begin{align}
+                A_2
+                &= 2MP_x(\sup_{t\le\eta}\abs{B_t-x}>\delta/2) \\
+                &= 2MP_0(\sup_{t\le\eta}\abs{B_t}>\delta/2).
+            \end{align}
+
+            ここで，サンプルパスの連続性より $\lim_{\eta\downarrow0}\sup_{t\le\eta}\abs{B_t}=0$ となるので，$P_0(\sup_{t\le\eta}\abs{B_t}>\delta/2)<\ep/6M$ を満たすように $\eta>0$ を固定すると $A_2<\ep/3.$
+            \item
+            Lemma \ref{thm:709}より $\Forall \eta>0$ に対し $P_x(T>\eta)<\ep/6M$ を満たすように $\alpha$ をとることができ，このとき $A_3<\ep/3.$
+        \end{enumerate}
+    \end{screen}
+
+    以上より $\Forall \ep>0, \Exists \alpha\text{ s.t. }\Forall x\in D,\abs{x-y}<\alpha\implies \abs{u(x)-g(y)}$ が言えたので\eqref{eq:702}が示せた．
 \end{proof}
 
 \end{document}
