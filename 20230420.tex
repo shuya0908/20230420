@@ -265,4 +265,25 @@ $$
 で定義され，これは $\partial D$ 上の確率測度となる．
 この測度を\textbf{$x$ に関連する $D$ の調和測度 (harmonic measure of $D$ related to $x$)}という．
 
+\begin{screen}
+    $\because)$
+    $\omega(x, \cdot)$ が確率測度 on $\partial D$ であること：
+    \begin{enumerate}[label=(\roman*)]
+        \item
+        $\omega(x, \partial D)=P_x(B_T\in \partial D)=1.$
+        \item
+        $\{A_n\}_{n\ge1}\subset \partial D$ に対し
+        \begin{align}
+            \omega(x, \bigcup_{n\ge1}A_n)
+            &= P_x(B_T\in \bigcup_{n\ge1}A_n) \\
+            &= P_x(\bigcup_{n\ge1}\{B_T\in A_n\}) \\
+            &= \sum_{n\ge1}P_x(B_T\in A_n) \\
+            &= \sum_{n\ge1}\omega(x, A_n).
+        \end{align}
+    \end{enumerate}
+\end{screen}
+
+一般的に測度 $\omega(x, dy)$ の明示的な表現は見つけることができない．
+$D$ が球の場合には，このような明示的表現が可能であることがわかり，この表現によってDirichlet問題の解の表現はより具体的になる．
+
 \end{document}
