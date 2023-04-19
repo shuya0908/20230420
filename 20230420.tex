@@ -16,7 +16,7 @@
 \setcounter{subsection}{1}
 \subsection{Brownian Motion and Harmonic Functions}
 
-Prop. 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が存在すれば，それは確率論的(probabilistic)な式 $u(x)=E_x[g(B_T)]$ で与えられることがわかる．
+Proposition 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が存在すれば，それは確率論的(probabilistic)な式 $u(x)=E_x[g(B_T)]$ で与えられることがわかる．
 一方，$\partial D$ 上の（有界可測）関数 $g$ の選び方によらず，(ii)より確率論的な式は $D$ 上調和的な関数 $u$ を生み出すことがわかる．
 たとえ $g$ に連続性が仮定されたとしても，関数 $u$ が境界条件 $g$ を満たすことは明らかではなく，また一般的に $g$ の連続性は不要（Exercise 7.24, 7.25参照，解をもたないDirichlet問題の例）．
 
@@ -80,7 +80,7 @@ Prop. 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が存在
     \end{screen}
 
     $\Forall F\subset \real^d$（開集合）に対し $T_F:=\set{t\ge0}{B_t\in F}$ と定める．
-    このとき $\{T_{\mathcal{C}(u, \gamma/2)}=0\}=\bigcap_{s>0}\UB{\{T_{\mathcal{C}(u, \gamma/2)}<s\}}{\in\clf_s\text{ by Prop. 3.9(i)}}\in\clf_{0+}$ に注意すると，Blumenthalの0-1法則より
+    このとき $\{T_{\mathcal{C}(u, \gamma/2)}=0\}=\bigcap_{s>0}\UB{\{T_{\mathcal{C}(u, \gamma/2)}<s\}}{\in\clf_s\text{ by Proposition 3.9(i)}}\in\clf_{0+}$ に注意すると，Blumenthalの0-1法則より
     \begin{align}
         P_0(T_{\mathcal{C}(u, \gamma/2)}=0)
         &= \lim_{s\downarrow0}P_0(T_{\mathcal{C}(u, \gamma/2)}<s) \\
@@ -149,7 +149,7 @@ Prop. 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が存在
 \begin{proof}
     $\Forall y\in\partial D$：固定
 
-    $g$：有界可測 on $\partial D$ なので，Prop. 7.7(ii)より $u$ は $D$ 上調和的．
+    $g$：有界可測 on $\partial D$ なので，Proposition 7.7(ii)より $u$ は $D$ 上調和的．
     よって
     \setcounter{equation}{1}
     \begin{align}\label{eq:702}
@@ -222,5 +222,11 @@ Prop. 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が存在
 
     以上より $\Forall \ep>0, \Exists \alpha\text{ s.t. }\Forall x\in D,\abs{x-y}<\alpha\implies \abs{u(x)-g(y)}$ が言えたので\eqref{eq:702}が示せた．
 \end{proof}
+
+
+\begin{remark*}
+    (ECC)はDirichlet問題の解の存在性（及び一意性）に対する十分条件に過ぎない．
+    任意の連続境界値に対する解の存在を保証する必要十分条件については，例えば[69]を参照せよ\footnote{69. Port, S.C., Stone, C.J.: Brownian Motion and Classical Potential Theory. Academic Press, New York (1978) (\url{https://www.sciencedirect.com/book/9780125618502/brownian-motion-and-classical-potential-theory})}．
+\end{remark*}
 
 \end{document}
