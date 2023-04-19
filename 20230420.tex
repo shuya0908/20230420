@@ -20,18 +20,20 @@ Prop. 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が存在
 一方，$\partial D$ 上の（有界可測）関数 $g$ の選び方によらず，(ii)より確率論的な式は $D$ 上調和的な関数 $u$ を生み出すことがわかる．
 たとえ $g$ に連続性が仮定されたとしても，関数 $u$ が境界条件 $g$ を満たすことは明らかではなく，また一般的に $g$ の連続性は不要（Exercise 7.24, 7.25参照，解をもたないDirichlet問題の例）．
 
+
 \begin{df*}
     $y\in\partial D$ とする．
     
     $D$ が $y$ における\textbf{外部錐条件 (exterior cone condition, ECC)}を満たす
     
     $\darrow$
-    $\Exists \mathcal{C}(\neq\0)$：頂点 $y$ の開錐, $\Exists r>0$ s.t. $\mathcal{C}\cap B_r(y)\subset D^c.$
+    $\Exists \mathcal{C}(\neq\0)$：頂点 $y$ の開錐, $\Exists r>0$ s.t. $\mathcal{C}\cap \mathcal{B}_r(y)\subset D^c.$
 \end{df*}
 
 \begin{ex*}
     凸領域は境界に含まれる任意の点において(ECC)を満たす．
 \end{ex*}
+
 
 \setcounter{thm}{8}
 \begin{lem}~
@@ -42,6 +44,41 @@ Prop. 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が存在
 
     $\implies \Forall \eta>0$ に対し $\lim_{x\to y, x\in D}P_x(T>\eta) = 0.$
 \end{lem}
+
+\begin{proof}
+    $\Forall u\in\real^d$ with $\abs{u}=1, \Forall \gamma\in(0, 1)$ に対し，原点頂点の開円錐
+    \begin{align}
+        \mathcal{C}(u, \gamma)
+        := \set{z\in\real^d}{z\cdot u>(1-\gamma)\abs{z}}
+    \end{align}
+    を考える．
+    与えられた $y\in\partial D$ に対し $r>0, u, \gamma$ を
+    \begin{align}
+        y+(\mathcal{C}(u, \gamma)\cap\mathcal{B}_{r})\subset D^c
+    \end{align}
+    を満たすように固定すると，$D$ は(ECC)を満たす（$\mathcal{B}_{r}=\set{z\in\real^d}{\abs{z}<r}$）．
+    ここで
+    \begin{itemize}
+        \item $\mathcal{C}=\mathcal{C}(u, \gamma)\cap\mathcal{B}_{r}$
+        \item $\mathcal{C}'=\mathcal{C}(u, \gamma/2)\cap\mathcal{B}_{r/2}$
+    \end{itemize}
+    と定める．
+    
+    \begin{screen}
+        $\because)$
+        $\mathcal{C}(u, \gamma/2)\subset \mathcal{C}(u, \gamma)$ となること：
+        $1-\gamma/2>1-\gamma$ より
+        \begin{align}
+            z\in\mathcal{C}(u, \gamma/2)
+            &\iff z\cdot u>(1-\gamma/2)\abs{z} \\
+            &\implies z\cdot u>(1-\gamma)\abs{z} \\
+            &\iff z\in\mathcal{C}(u, \gamma).
+        \end{align}
+    \end{screen}
+
+    
+\end{proof}
+
 
 \setcounter{thm}{7}
 \begin{thm}[Dirichlet問題の解]
