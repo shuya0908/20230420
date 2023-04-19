@@ -84,13 +84,22 @@ Proposition 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が
     \begin{align}
         P_0(T_{\mathcal{C}(u, \gamma/2)}=0)
         &= \lim_{s\downarrow0}P_0(T_{\mathcal{C}(u, \gamma/2)}<s) \\
-        &\ge \lim_{s\downarrow0}P_0(B_s\in\mathcal{C}(u, \gamma/2)) > 0.
+        &\ge \lim_{s\downarrow0}P_0(B_s\in\mathcal{C}(u, \gamma/2))>0.
     \end{align}
     \begin{gather}
         \therefore 
         P_0(T_{\mathcal{C}(u, \gamma/2)}=0) = 1.
     \end{gather}
-
+    
+    \begin{screen}
+        $\because)$
+        \begin{align}
+            P_0(B_s\in\mathcal{C}(u, \gamma/2))
+            &= \int_{\mathcal{C}(u, \gamma/2)}\frac{1}{(2\pi s)^{d/2}}\exp{\left(-\frac{\abs{y}^2}{2s}\right)}dy \\
+            &= \int_{\mathcal{C}(u, \gamma/2)}\frac{1}{(2\pi)^{d/2}}\exp{\left(-\frac{\abs{z}^2}{2}\right)}dz > 0.
+        \end{align}
+    \end{screen}
+    
     これとサンプルパスの連続性より $P_0(T_{\mathcal{C}'}=0) = 1$ なので $T_{\mathcal{C}'}=0, P_0$-a.s.\nazo
 
     一方 $\Forall a\in(0, r/2)$ に対し
