@@ -20,15 +20,16 @@ Prop. 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が存在
 一方，$\partial D$ 上の（有界可測）関数 $g$ の選び方によらず，(ii)より確率論的な式は $D$ 上調和的な関数 $u$ を生み出すことがわかる．
 たとえ $g$ に連続性が仮定されたとしても，関数 $u$ が境界条件 $g$ を満たすことは明らかではなく，また一般的に $g$ の連続性は不要（Exercise 7.24, 7.25参照，解をもたないDirichlet問題の例）．
 
-
-\begin{df*}
-    $y\in\partial D$ とする．
-    
-    $D$ が $y$ における\textbf{外部錐条件 (exterior cone condition, ECC)}を満たす
-    
-    $\darrow$
-    $\Exists \mathcal{C}(\neq\0)$：頂点 $y$ の開錐, $\Exists r>0$ s.t. $\mathcal{C}\cap \mathcal{B}_r(y)\subset D^c.$
-\end{df*}
+\begin{shadebox}
+    \begin{df*}
+        $y\in\partial D$ とする．
+        
+        $D$ が $y$ における\textbf{外部錐条件 (exterior cone condition, ECC)}を満たす
+        
+        $\darrow$
+        $\Exists \mathcal{C}(\neq\0)$：頂点 $y$ の開錐, $\Exists r>0$ s.t. $\mathcal{C}\cap \mathcal{B}_r(y)\subset D^c.$
+    \end{df*}
+\end{shadebox}
 
 \begin{ex*}
     凸領域は境界に含まれる任意の点において(ECC)を満たす．
@@ -36,14 +37,16 @@ Prop. 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が存在
 
 
 \setcounter{thm}{8}
-\begin{lem}~
-    \begin{itemize}
-        \item $D\subset \real^d$：$\Forall y\in\partial D$ において(ECC)を満たす有界領域
-        \item $T=\inf\set{t\ge0}{B_t\notin D}$
-    \end{itemize}
-
-    $\implies \Forall \eta>0$ に対し $\lim_{x\to y, x\in D}P_x(T>\eta) = 0.$
-\end{lem}
+\begin{shadebox}
+    \begin{lem}~
+        \begin{itemize}
+            \item $D\subset \real^d$：$\Forall y\in\partial D$ において(ECC)を満たす有界領域
+            \item $T=\inf\set{t\ge0}{B_t\notin D}$
+        \end{itemize}
+    
+        $\implies \Forall \eta>0$ に対し $\lim_{x\to y, x\in D}P_x(T>\eta) = 0.$
+    \end{lem}
+\end{shadebox}
 
 \begin{proof}
     $\Forall u\in\real^d$ with $\abs{u}=1, \Forall \gamma\in(0, 1)$ に対し，原点頂点の開円錐
@@ -134,12 +137,14 @@ Prop. 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が存在
 \end{proof}
 
 
-\setcounter{thm}{7}
-\begin{thm}[Dirichlet問題の解]
-    直前のLemmaと同じ条件を仮定
-    
-    $\implies \Forall g$：連続 on $\partial D, u(x) = E_x[g(B_T)]$ は境界条件 $g$ をみたすDirichlet問題の唯一解を与える．
-\end{thm}
+\begin{shadebox}
+    \setcounter{thm}{7}
+    \begin{thm}[Dirichlet問題の解]
+        直前のLemmaと同じ条件を仮定
+        
+        $\implies \Forall g$：連続 on $\partial D, u(x) = E_x[g(B_T)]$ は境界条件 $g$ をみたすDirichlet問題の唯一解を与える．
+    \end{thm}
+\end{shadebox}
 
 \begin{proof}
     $\Forall y\in\partial D$：固定
