@@ -98,7 +98,7 @@ Prop. 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が存在
         (\subset \mathcal{C}')
     \end{align}
     と定める．
-    定め方より $a\downarrow0$ とすると $\mathcal{C}'_a\uparrow\mathcal{C}'\implies T_{\mathcal{C}'_a}\downarrow T_{\mathcal{C}'}=0, P_0$-a.s.（対象の集合が大きくなると，より小さな時間で到達するイメージ）
+    定め方より $\lim_{a\downarrow0}\uparrow\mathcal{C}'_a=\mathcal{C}'\implies \lim_{a\downarrow0}\downarrow T_{\mathcal{C}'_a}=T_{\mathcal{C}'}=0, P_0$-a.s.（対象の集合が大きくなると，より小さな時間で到達するイメージ）
 
     ゆえに 
     \begin{align}
@@ -110,6 +110,27 @@ Prop. 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が存在
     \end{align}
 
     この $a$ を固定する．
+    ここで
+    \begin{itemize}
+        \item 
+        $y+\mathcal{C}\subset D^c\implies T(=T_{D^c})\le T_{y+\mathcal{C}}$
+        \item
+        $\lim_{x\to y, x\in D}(y-x+\mathcal{C})\supset \mathcal{C}'_a\implies T_{y-x+\mathcal{C}}\le T_{\mathcal{C}'_a}$
+    \end{itemize}
+     より $\abs{y-x}$ を十分小さくとると
+     \begin{align}
+         P_x(T\le\eta)
+         &\ge P_x(T_{y+\mathcal{C}}\le\eta) \\
+         &= P_0(T_{y-x+\mathcal{C}}\le\eta) \\
+         &\ge P_0(T_{\mathcal{C}'_a}\le\eta)
+         \ge 1-\beta.
+     \end{align}
+     $$
+     \therefore 
+     \lim_{x\to y, x\in D}P_x(T<\eta)<\beta.
+     $$
+
+     $\beta$ の任意性より $\lim_{x\to y, x\in D}P_x(T<\eta)=0.$
 \end{proof}
 
 
