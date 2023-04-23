@@ -305,6 +305,21 @@ $$
 一般的に測度 $\omega(x, dy)$ の明示的な表現は見つけることができない．
 $D$ が球の場合には，このような明示的表現が可能であることがわかり，この表現によってDirichlet問題の解の表現はより具体的になる．
 
+\begin{screen}
+    $\because)$
+    Theorem 7.14より $D=\clb_1$ のとき
+    $$
+    \omega(x, dy)
+    = K(x, y)\sigma_1(dy)
+    $$
+    と表せる．
+    ただし
+    \begin{itemize}
+        \item $K$：Poisson核（Definition \ref{thm:710}参照）
+        \item $\sigma_1$：単位球面 $\partial\clb_1$ 上の一様分布を与える確率測度
+    \end{itemize}
+\end{screen}
+
 これ以降
 \begin{itemize}
     \item $d\ge2$
@@ -314,7 +329,8 @@ $D$ が球の場合には，このような明示的表現が可能であるこ�
 とする．
 
 \begin{shadebox}
-    \begin{df}
+    \setcounter{thm}{9}
+    \begin{df}\label{thm:710}
         （単位球の）\textbf{Poisson核 (Poisson kernel)}
         $\darrow$
         $\Forall x\in\clb_1, \Forall y\in\partial\clb_1$ に対し
@@ -322,7 +338,7 @@ $D$ が球の場合には，このような明示的表現が可能であるこ�
         K(x, y)
         = \frac{1-\abs{x}^2}{\abs{y-x}^d}
         $$
-        で定まる関数 $K:\clb_1\times\partial\clb_1\to\real.$
+        で定まる関数 $K$ on $\clb_1\times\partial\clb_1.$
     \end{df}
 \end{shadebox}
 
