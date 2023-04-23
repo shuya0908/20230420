@@ -18,16 +18,16 @@
 
 Proposition 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が存在すれば，それは確率論的(probabilistic)な式 $u(x)=E_x[g(B_T)]$ で与えられることがわかる．
 一方，$\partial D$ 上の（有界可測）関数 $g$ の選び方によらず，(ii)より確率論的な式は $D$ 上調和的な関数 $u$ を生み出すことがわかる．
-たとえ $g$ に連続性が仮定されたとしても，関数 $u$ が境界条件 $g$ を満たすことは明らかではなく，また一般的に $g$ の連続性は不要（Exercise 7.24, 7.25参照，解をもたないDirichlet問題の例）．
+たとえ $g$ に連続性が仮定されたとしても，関数 $u$ が境界条件 $g$ を満たすことは明らかではなく，また一般的に境界条件を満たすとは限らない（Exercise 7.24, 7.25参照，解をもたないDirichlet問題の例）．
 
 \begin{shadebox}
     \begin{df*}
         $y\in\partial D$ とする．
         
-        $D$ が $y$ における\textbf{外部錐条件 (exterior cone condition, Zaremba's cone condition)}を満たす
+        $D$ が $y$ における\textbf{外部錐条件 (exterior cone condition)}を満たす
         
         $\darrow$
-        $\Exists \mathcal{C}(\neq\0)$：頂点 $y$ の開錐, $\Exists r>0$ s.t. $\mathcal{C}\cap \mathcal{B}_r(y)\subset D^c.$
+        $\Exists \mathcal{C}(\neq\0)$：頂点 $y$ の開錐, $\Exists r>0$ s.t. $\mathcal{C}\cap (y+\mathcal{B}_r)\subset D^c$（$\mathcal{B}_{r}=\set{z\in\real^d}{\abs{z}<r}$）．
     \end{df*}
 \end{shadebox}
 
@@ -55,11 +55,31 @@ Proposition 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が
         := \set{z\in\real^d}{z\cdot u>(1-\gamma)\abs{z}}
     \end{align}
     を考える．
+
+    \begin{screen}
+        $\because)$ $\mathcal{C}(u, \gamma)$ が開円錐となること：
+        \begin{itemize}
+            \item $\theta_{\gamma}$：（$u$ を対称軸とする）$\mathcal{C}(u, \gamma)$ の半頂角
+            \item $\phi_z$：対象軸と $z$ のなす角
+        \end{itemize}
+        とする．
+        $\theta_{\gamma}:=1-\gamma$ と定めると $\theta_{\gamma}\in(0, \pi/2).$
+        $\mathcal{C}(u, \gamma)$ の定め方より $\abs{z}\neq0$ であるため，
+        \begin{align}
+            z\cdot u>(1-\gamma)\abs{z}
+            &\implies \abs{z}\cos\phi_z > \abs{z}\cos\theta_{\gamma} \\
+            &\implies \cos\phi_z > \cos\theta_{\gamma} \\
+            &\implies \phi_z < \theta_{\gamma}.
+        \end{align}
+
+        ゆえに $\mathcal{C}(u, \gamma)$ は対称軸 $u$，半頂角 $\theta_{\gamma}=\cos^{-1}(1-\gamma)$ の開円錐となる．
+    \end{screen}
+    
     与えられた $y\in\partial D$ に対し $r>0, u, \gamma$ を
     \begin{align}
         y+(\mathcal{C}(u, \gamma)\cap\mathcal{B}_{r})\subset D^c
     \end{align}
-    を満たすように固定すると，$D$ は(ECC)を満たす（$\mathcal{B}_{r}=\set{z\in\real^d}{\abs{z}<r}$）．
+    を満たすように固定すると，$D$ は(ECC)を満たす．
     ここで
     \begin{itemize}
         \item $\mathcal{C}=\mathcal{C}(u, \gamma)\cap\mathcal{B}_{r}$
@@ -70,37 +90,34 @@ Proposition 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が
     \begin{screen}
         $\because)$
         $\mathcal{C}(u, \gamma/2)\subset \mathcal{C}(u, \gamma)$ となること：
-        $1-\gamma/2>1-\gamma$ より
-        \begin{align}
-            z\in\mathcal{C}(u, \gamma/2)
-            &\iff z\cdot u>(1-\gamma/2)\abs{z} \\
-            &\implies z\cdot u>(1-\gamma)\abs{z} \\
-            &\iff z\in\mathcal{C}(u, \gamma).
-        \end{align}
+        $\gamma/2<\gamma\implies \theta_{\gamma/2}<\theta_{\gamma}.$
     \end{screen}
 
-    $\Forall F\subset \real^d$（開集合）に対し $T_F:=\set{t\ge0}{B_t\in F}$ と定める．
-    このとき $\{T_{\mathcal{C}(u, \gamma/2)}=0\}=\bigcap_{s>0}\UB{\{T_{\mathcal{C}(u, \gamma/2)}<s\}}{\in\clf_s\text{ by Proposition 3.9(i)}}\in\clf_{0+}$ に注意すると，Blumenthalの0-1法則より
+    $\Forall F$：開集合 in $\real^d$ に対し $T_F:=\inf\set{t\ge0}{B_t\in F}$ と定める．
+    このとき $\{T_{\mathcal{C}'}=0\}=\bigcap_{s>0}\UB{\{T_{\mathcal{C}'}<s\}}{\in\clf_s\text{ by Proposition 3.9(i)}}\in\clf_{0+}$ に注意すると，Blumenthalの0-1法則より
     \begin{align}
-        P_0(T_{\mathcal{C}(u, \gamma/2)}=0)
-        &= \lim_{s\downarrow0}P_0(T_{\mathcal{C}(u, \gamma/2)}<s) \\
-        &\ge \lim_{s\downarrow0}P_0(B_s\in\mathcal{C}(u, \gamma/2))>0.
+        P_0(T_{\mathcal{C}'}=0)
+        &= \lim_{s\downarrow0}P_0(T_{\mathcal{C}'}<s) \\
+        &\ge \lim_{s\downarrow0}P_0(B_s\in\mathcal{C}')
+        \ge \lim_{s\downarrow0}q
+        >0.
     \end{align}
     \begin{gather}
         \therefore 
-        P_0(T_{\mathcal{C}(u, \gamma/2)}=0) = 1.
+        P_0(T_{\mathcal{C}'}=0) = 1.
     \end{gather}
     
     \begin{screen}
         $\because)$
         \begin{align}
-            P_0(B_s\in\mathcal{C}(u, \gamma/2))
-            &= \int_{\mathcal{C}(u, \gamma/2)}\frac{1}{(2\pi s)^{d/2}}\exp{\left(-\frac{\abs{y}^2}{2s}\right)}dy \\
-            &= \int_{\mathcal{C}(u, \gamma/2)}\frac{1}{(2\pi)^{d/2}}\exp{\left(-\frac{\abs{z}^2}{2}\right)}dz > 0.
+            P_0(B_s\in\mathcal{C}')
+            = P_0(B_1\in\frac{1}{\sqrt{s}}\mathcal{C}')
+            &\ge P_0(B_1\in\mathcal{C}') \\
+            &= \int_{\mathcal{C}'}\frac{1}{(2\pi)^{d/2}}\exp{\left(-\frac{\abs{y}^2}{2}\right)}dy =: q\text{（$s$ に依らない正定数）}.
         \end{align}
     \end{screen}
     
-    これとサンプルパスの連続性より $P_0(T_{\mathcal{C}'}=0) = 1$ なので $T_{\mathcal{C}'}=0, P_0$-a.s.\nazo
+    ゆえに $T_{\mathcal{C}'}=0, P_0$-a.s.
 
     一方 $\Forall a\in(0, r/2)$ に対し
     \begin{align}
@@ -114,35 +131,37 @@ Proposition 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が
 
     ゆえに 
     \begin{align}
-        \Forall \eta>0, \Exists \alpha>0\text{ s.t. }
-        & a<\alpha\implies P_0(T_{\mathcal{C}'_a}\le\eta)=1 \\
-        \implies 
-        \Forall \beta>0, \Forall \eta>0, \Exists \alpha>0\text{ s.t. }
-        & a<\alpha\implies P_0(T_{\mathcal{C}'_a}\le\eta)\ge1-\beta.
+        \Forall \beta>0, \Forall \eta>0, \Exists \tilde{a}>0\text{ s.t. }
+         a<\tilde{a}\implies P_0(T_{\mathcal{C}'_a}\le\eta)\ge1-\beta.
     \end{align}
 
     この $a$ を固定する．
-    ここで
+    ここで $\abs{y-x}$ を十分小さくとると
     \begin{itemize}
         \item 
         $y+\mathcal{C}\subset D^c\implies T(=T_{D^c})\le T_{y+\mathcal{C}}$
         \item
-        $\lim_{x\to y, x\in D}(y-x+\mathcal{C})\supset \mathcal{C}'_a\implies T_{y-x+\mathcal{C}}\le T_{\mathcal{C}'_a}$
+        $y-x+\mathcal{C}\supset \mathcal{C}'_a\implies T_{y-x+\mathcal{C}}\le T_{\mathcal{C}'_a}$
     \end{itemize}
-     より $\Forall x\in D$ に対し $\abs{y-x}$ を十分小さくとると，$\Forall \eta>0$ に対し
+     より $\Forall \beta>0, \Forall \eta>0, \Exists \alpha>0$ s.t. $\abs{y-x}<\alpha$ とすると
      \begin{align}
          P_x(T\le\eta)
          &\ge P_x(T_{y+\mathcal{C}}\le\eta) \\
          &= P_0(T_{y-x+\mathcal{C}}\le\eta) \\
          &\ge P_0(T_{\mathcal{C}'_a}\le\eta)
-         \ge 1-\beta.
+         \ge 1-\beta
+         \implies P_x(T>\eta)<\beta.
      \end{align}
-     $$
-     \therefore 
-     \lim_{x\to y, x\in D}P_x(T>\eta)<\beta.
-     $$
 
-     $\beta$ の任意性より $\lim_{x\to y, x\in D}P_x(T>\eta)=0.$
+     ここで
+     $$
+     P_x(T>\eta)
+     \le \limsup_{x\to y, x\in D}P_x(T>\eta)
+     (= \lim_{\alpha\downarrow0}\sup_{\abs{y-x}<\alpha}P_x(T>\eta))
+     <\beta
+     $$
+     より $\beta$ の任意性から $\limsup_{x\to y, x\in D}P_x(T>\eta)=0.$
+     同様に $\liminf_{x\to y, x\in D}P_x(T>\eta)=0$ が言えるので，$P_x(T>\eta)$ の極限値が存在することが言え，$\lim_{x\to y, x\in D}P_x(T>\eta)=0.$
 \end{proof}
 
 
@@ -176,7 +195,7 @@ Proposition 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が
         $\Exists M>0$ s.t. $\sup_{z\in\partial D}\abs{g(z)}\le M.$
     \end{itemize}
 
-    $\implies\Forall x\in D$ に対し $\abs{y-x}<\alpha(\in(0,\delta/2])$ とすると $\Forall \eta>0$ に対し
+    $\implies\Forall \eta>0$ に対し $\abs{y-x}<\alpha(\in(0,\delta/2])$ とすると
     \begin{align}
         \abs{u(x)-g(y)}
         &= \abs{E_x[g(B_T)-g(y)]} \\
@@ -210,11 +229,11 @@ Proposition 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が
             \begin{align}
                 \abs{B_T-y}
                 &\le \abs{B_T-x}+\abs{y-x} \\
-                &\le \sup_{t\le\eta}\abs{B_t-x}+\alpha \\
+                &< \sup_{t\le\eta}\abs{B_t-x}+\alpha \\
                 &\le \delta/2+\delta/2
                 =\delta
             \end{align}
-            が成り立つので，$\delta$ の選び方より $A_1\le\ep/3.$
+            が成り立つので，$\delta$ の選び方より $A_1<\ep/3.$
             \item
             BMの平行移動不変性より
             \begin{align}
@@ -225,11 +244,11 @@ Proposition 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が
 
             ここで，サンプルパスの連続性より $\lim_{\eta\downarrow0}\sup_{t\le\eta}\abs{B_t}=0$ となるので，$P_0(\sup_{t\le\eta}\abs{B_t}>\delta/2)<\ep/6M$ を満たすように $\eta>0$ を固定すると $A_2<\ep/3.$
             \item
-            Lemma \ref{thm:709}より $\Forall \eta>0$ に対し $P_x(T>\eta)<\ep/6M$ を満たすように $\alpha$ をとることができ，このとき $A_3<\ep/3.$
+            Lemma \ref{thm:709}より $\Forall \eta>0$ に対し $P_x(T>\eta)<\ep/6M$ を満たすように $\abs{y-x}$ を抑える $\alpha$ をとることができ，このとき $A_3<\ep/3.$
         \end{enumerate}
     \end{screen}
 
-    以上より $\Forall \ep>0, \Exists \alpha\text{ s.t. }\Forall x\in D,\abs{x-y}<\alpha\implies \abs{u(x)-g(y)}$ が言えたので\eqref{eq:702}が示せた．
+    以上より $\Forall \ep>0, \Exists \alpha>0\text{ s.t. }\abs{x-y}<\alpha\implies \abs{u(x)-g(y)}<\ep$ が言えたので\eqref{eq:702}が示せた．
 \end{proof}
 
 
@@ -286,6 +305,21 @@ $$
 一般的に測度 $\omega(x, dy)$ の明示的な表現は見つけることができない．
 $D$ が球の場合には，このような明示的表現が可能であることがわかり，この表現によってDirichlet問題の解の表現はより具体的になる．
 
+\begin{screen}
+    $\because)$
+    Theorem 7.14より $D=\clb_1$ のとき
+    $$
+    \omega(x, dy)
+    = K(x, y)\sigma_1(dy)
+    $$
+    と表せる．
+    ただし
+    \begin{itemize}
+        \item $K$：Poisson核（Definition \ref{thm:710}参照）
+        \item $\sigma_1$：単位球面 $\partial\clb_1$ 上の一様分布を与える確率測度
+    \end{itemize}
+\end{screen}
+
 これ以降
 \begin{itemize}
     \item $d\ge2$
@@ -295,7 +329,8 @@ $D$ が球の場合には，このような明示的表現が可能であるこ�
 とする．
 
 \begin{shadebox}
-    \begin{df}
+    \setcounter{thm}{9}
+    \begin{df}\label{thm:710}
         （単位球の）\textbf{Poisson核 (Poisson kernel)}
         $\darrow$
         $\Forall x\in\clb_1, \Forall y\in\partial\clb_1$ に対し
@@ -303,7 +338,7 @@ $D$ が球の場合には，このような明示的表現が可能であるこ�
         K(x, y)
         = \frac{1-\abs{x}^2}{\abs{y-x}^d}
         $$
-        で定まる関数 $K:\clb_1\times\partial\clb_1\to\real.$
+        で定まる関数 $K$ on $\clb_1\times\partial\clb_1.$
     \end{df}
 \end{shadebox}
 
