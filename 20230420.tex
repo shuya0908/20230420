@@ -286,4 +286,25 @@ $$
 一般的に測度 $\omega(x, dy)$ の明示的な表現は見つけることができない．
 $D$ が球の場合には，このような明示的表現が可能であることがわかり，この表現によってDirichlet問題の解の表現はより具体的になる．
 
+これ以降
+\begin{itemize}
+    \item $d\ge2$
+    \item $D=\clb_1(=\set{z\in\real^d}{\abs{z}<1})$
+    \item $\partial \clb_1$：単位球面 in $\real^d$
+\end{itemize}
+とする．
+
+\begin{shadebox}
+    \begin{df}
+        （単位球の）\textbf{Poisson核 (Poisson kernel)}
+        $\darrow$
+        $\Forall x\in\clb_1, \Forall y\in\partial\clb_1$ に対し
+        $$
+        K(x, y)
+        = \frac{1-\abs{x}^2}{\abs{y-x}^d}
+        $$
+        で定まる関数 $K:\clb_1\times\partial\clb_1\to\real.$
+    \end{df}
+\end{shadebox}
+
 \end{document}
