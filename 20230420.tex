@@ -195,7 +195,7 @@ Proposition 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が
         $\Exists M>0$ s.t. $\sup_{z\in\partial D}\abs{g(z)}\le M.$
     \end{itemize}
 
-    $\implies\Forall x\in D$ に対し $\abs{y-x}<\alpha(\in(0,\delta/2])$ とすると $\Forall \eta>0$ に対し
+    $\implies\Forall \eta>0$ に対し $\abs{y-x}<\alpha(\in(0,\delta/2])$ とすると
     \begin{align}
         \abs{u(x)-g(y)}
         &= \abs{E_x[g(B_T)-g(y)]} \\
@@ -229,11 +229,11 @@ Proposition 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が
             \begin{align}
                 \abs{B_T-y}
                 &\le \abs{B_T-x}+\abs{y-x} \\
-                &\le \sup_{t\le\eta}\abs{B_t-x}+\alpha \\
+                &< \sup_{t\le\eta}\abs{B_t-x}+\alpha \\
                 &\le \delta/2+\delta/2
                 =\delta
             \end{align}
-            が成り立つので，$\delta$ の選び方より $A_1\le\ep/3.$
+            が成り立つので，$\delta$ の選び方より $A_1<\ep/3.$
             \item
             BMの平行移動不変性より
             \begin{align}
@@ -244,11 +244,11 @@ Proposition 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が
 
             ここで，サンプルパスの連続性より $\lim_{\eta\downarrow0}\sup_{t\le\eta}\abs{B_t}=0$ となるので，$P_0(\sup_{t\le\eta}\abs{B_t}>\delta/2)<\ep/6M$ を満たすように $\eta>0$ を固定すると $A_2<\ep/3.$
             \item
-            Lemma \ref{thm:709}より $\Forall \eta>0$ に対し $P_x(T>\eta)<\ep/6M$ を満たすように $\alpha$ をとることができ，このとき $A_3<\ep/3.$
+            Lemma \ref{thm:709}より $\Forall \eta>0$ に対し $P_x(T>\eta)<\ep/6M$ を満たすように $\abs{y-x}$ を抑える $\alpha$ をとることができ，このとき $A_3<\ep/3.$
         \end{enumerate}
     \end{screen}
 
-    以上より $\Forall \ep>0, \Exists \alpha\text{ s.t. }\Forall x\in D,\abs{x-y}<\alpha\implies \abs{u(x)-g(y)}$ が言えたので\eqref{eq:702}が示せた．
+    以上より $\Forall \ep>0, \Exists \alpha>0\text{ s.t. }\abs{x-y}<\alpha\implies \abs{u(x)-g(y)}<\ep$ が言えたので\eqref{eq:702}が示せた．
 \end{proof}
 
 
