@@ -18,16 +18,16 @@
 
 Proposition 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が存在すれば，それは確率論的(probabilistic)な式 $u(x)=E_x[g(B_T)]$ で与えられることがわかる．
 一方，$\partial D$ 上の（有界可測）関数 $g$ の選び方によらず，(ii)より確率論的な式は $D$ 上調和的な関数 $u$ を生み出すことがわかる．
-たとえ $g$ に連続性が仮定されたとしても，関数 $u$ が境界条件 $g$ を満たすことは明らかではなく，また一般的に $g$ の連続性は不要（Exercise 7.24, 7.25参照，解をもたないDirichlet問題の例）．
+たとえ $g$ に連続性が仮定されたとしても，関数 $u$ が境界条件 $g$ を満たすことは明らかではなく，また一般的に境界条件を満たすとは限らない（Exercise 7.24, 7.25参照，解をもたないDirichlet問題の例）．
 
 \begin{shadebox}
     \begin{df*}
         $y\in\partial D$ とする．
         
-        $D$ が $y$ における\textbf{外部錐条件 (exterior cone condition, Zaremba's cone condition)}を満たす
+        $D$ が $y$ における\textbf{外部錐条件 (exterior cone condition)}を満たす
         
         $\darrow$
-        $\Exists \mathcal{C}(\neq\0)$：頂点 $y$ の開錐, $\Exists r>0$ s.t. $\mathcal{C}\cap \mathcal{B}_r(y)\subset D^c.$
+        $\Exists \mathcal{C}(\neq\0)$：頂点 $y$ の開錐, $\Exists r>0$ s.t. $\mathcal{C}\cap (y+\mathcal{B}_r)\subset D^c$（$\mathcal{B}_{r}=\set{z\in\real^d}{\abs{z}<r}$）．
     \end{df*}
 \end{shadebox}
 
@@ -59,7 +59,7 @@ Proposition 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が
     \begin{align}
         y+(\mathcal{C}(u, \gamma)\cap\mathcal{B}_{r})\subset D^c
     \end{align}
-    を満たすように固定すると，$D$ は(ECC)を満たす（$\mathcal{B}_{r}=\set{z\in\real^d}{\abs{z}<r}$）．
+    を満たすように固定すると，$D$ は(ECC)を満たす．
     ここで
     \begin{itemize}
         \item $\mathcal{C}=\mathcal{C}(u, \gamma)\cap\mathcal{B}_{r}$
@@ -285,5 +285,26 @@ $$
 
 一般的に測度 $\omega(x, dy)$ の明示的な表現は見つけることができない．
 $D$ が球の場合には，このような明示的表現が可能であることがわかり，この表現によってDirichlet問題の解の表現はより具体的になる．
+
+これ以降
+\begin{itemize}
+    \item $d\ge2$
+    \item $D=\clb_1(=\set{z\in\real^d}{\abs{z}<1})$
+    \item $\partial \clb_1$：単位球面 in $\real^d$
+\end{itemize}
+とする．
+
+\begin{shadebox}
+    \begin{df}
+        （単位球の）\textbf{Poisson核 (Poisson kernel)}
+        $\darrow$
+        $\Forall x\in\clb_1, \Forall y\in\partial\clb_1$ に対し
+        $$
+        K(x, y)
+        = \frac{1-\abs{x}^2}{\abs{y-x}^d}
+        $$
+        で定まる関数 $K:\clb_1\times\partial\clb_1\to\real.$
+    \end{df}
+\end{shadebox}
 
 \end{document}
