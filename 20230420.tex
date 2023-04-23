@@ -55,6 +55,26 @@ Proposition 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が
         := \set{z\in\real^d}{z\cdot u>(1-\gamma)\abs{z}}
     \end{align}
     を考える．
+
+    \begin{screen}
+        $\because)$ $\mathcal{C}(u, \gamma)$ が開円錐となること：
+        \begin{itemize}
+            \item $\theta_{\gamma}$：（$u$ を対称軸とする）$\mathcal{C}(u, \gamma)$ の半頂角
+            \item $\phi_z$：対象軸と $z$ のなす角
+        \end{itemize}
+        とする．
+        $\theta_{\gamma}:=1-\gamma$ と定めると $\theta_{\gamma}\in(0, \pi/2).$
+        $\mathcal{C}(u, \gamma)$ の定め方より $\abs{z}\neq0$ であるため，
+        \begin{align}
+            z\cdot u>(1-\gamma)\abs{z}
+            &\implies \abs{z}\cos\phi_z > \abs{z}\cos\theta_{\gamma} \\
+            &\implies \cos\phi_z > \cos\theta_{\gamma} \\
+            &\implies \phi_z < \theta_{\gamma}.
+        \end{align}
+
+        ゆえに $\mathcal{C}(u, \gamma)$ は対称軸 $u$，半頂角 $\theta_{\gamma}=\cos^{-1}(1-\gamma)$ の開円錐となる．
+    \end{screen}
+    
     与えられた $y\in\partial D$ に対し $r>0, u, \gamma$ を
     \begin{align}
         y+(\mathcal{C}(u, \gamma)\cap\mathcal{B}_{r})\subset D^c
@@ -70,37 +90,34 @@ Proposition 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が
     \begin{screen}
         $\because)$
         $\mathcal{C}(u, \gamma/2)\subset \mathcal{C}(u, \gamma)$ となること：
-        $1-\gamma/2>1-\gamma$ より
-        \begin{align}
-            z\in\mathcal{C}(u, \gamma/2)
-            &\iff z\cdot u>(1-\gamma/2)\abs{z} \\
-            &\implies z\cdot u>(1-\gamma)\abs{z} \\
-            &\iff z\in\mathcal{C}(u, \gamma).
-        \end{align}
+        $\gamma/2<\gamma\implies \theta_{\gamma/2}<\theta_{\gamma}.$
     \end{screen}
 
-    $\Forall F\subset \real^d$（開集合）に対し $T_F:=\set{t\ge0}{B_t\in F}$ と定める．
-    このとき $\{T_{\mathcal{C}(u, \gamma/2)}=0\}=\bigcap_{s>0}\UB{\{T_{\mathcal{C}(u, \gamma/2)}<s\}}{\in\clf_s\text{ by Proposition 3.9(i)}}\in\clf_{0+}$ に注意すると，Blumenthalの0-1法則より
+    $\Forall F$：開集合 in $\real^d$ に対し $T_F:=\inf\set{t\ge0}{B_t\in F}$ と定める．
+    このとき $\{T_{\mathcal{C}'}=0\}=\bigcap_{s>0}\UB{\{T_{\mathcal{C}'}<s\}}{\in\clf_s\text{ by Proposition 3.9(i)}}\in\clf_{0+}$ に注意すると，Blumenthalの0-1法則より
     \begin{align}
-        P_0(T_{\mathcal{C}(u, \gamma/2)}=0)
-        &= \lim_{s\downarrow0}P_0(T_{\mathcal{C}(u, \gamma/2)}<s) \\
-        &\ge \lim_{s\downarrow0}P_0(B_s\in\mathcal{C}(u, \gamma/2))>0.
+        P_0(T_{\mathcal{C}'}=0)
+        &= \lim_{s\downarrow0}P_0(T_{\mathcal{C}'}<s) \\
+        &\ge \lim_{s\downarrow0}P_0(B_s\in\mathcal{C}')
+        \ge \lim_{s\downarrow0}q
+        >0.
     \end{align}
     \begin{gather}
         \therefore 
-        P_0(T_{\mathcal{C}(u, \gamma/2)}=0) = 1.
+        P_0(T_{\mathcal{C}'}=0) = 1.
     \end{gather}
     
     \begin{screen}
         $\because)$
         \begin{align}
-            P_0(B_s\in\mathcal{C}(u, \gamma/2))
-            &= \int_{\mathcal{C}(u, \gamma/2)}\frac{1}{(2\pi s)^{d/2}}\exp{\left(-\frac{\abs{y}^2}{2s}\right)}dy \\
-            &= \int_{\mathcal{C}(u, \gamma/2)}\frac{1}{(2\pi)^{d/2}}\exp{\left(-\frac{\abs{z}^2}{2}\right)}dz > 0.
+            P_0(B_s\in\mathcal{C}')
+            = P_0(B_1\in\frac{1}{\sqrt{s}}\mathcal{C}')
+            &\ge P_0(B_1\in\mathcal{C}') \\
+            &= \int_{\mathcal{C}'}\frac{1}{(2\pi)^{d/2}}\exp{\left(-\frac{\abs{y}^2}{2}\right)}dy =: q\text{（$s$ に依らない正定数）}.
         \end{align}
     \end{screen}
     
-    これとサンプルパスの連続性より $P_0(T_{\mathcal{C}'}=0) = 1$ なので $T_{\mathcal{C}'}=0, P_0$-a.s.\nazo
+    ゆえに $T_{\mathcal{C}'}=0, P_0$-a.s.
 
     一方 $\Forall a\in(0, r/2)$ に対し
     \begin{align}
@@ -114,35 +131,37 @@ Proposition 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が
 
     ゆえに 
     \begin{align}
-        \Forall \eta>0, \Exists \alpha>0\text{ s.t. }
-        & a<\alpha\implies P_0(T_{\mathcal{C}'_a}\le\eta)=1 \\
-        \implies 
-        \Forall \beta>0, \Forall \eta>0, \Exists \alpha>0\text{ s.t. }
-        & a<\alpha\implies P_0(T_{\mathcal{C}'_a}\le\eta)\ge1-\beta.
+        \Forall \beta>0, \Forall \eta>0, \Exists \tilde{a}>0\text{ s.t. }
+         a<\tilde{a}\implies P_0(T_{\mathcal{C}'_a}\le\eta)\ge1-\beta.
     \end{align}
 
     この $a$ を固定する．
-    ここで
+    ここで $\abs{y-x}$ を十分小さくとると
     \begin{itemize}
         \item 
         $y+\mathcal{C}\subset D^c\implies T(=T_{D^c})\le T_{y+\mathcal{C}}$
         \item
-        $\lim_{x\to y, x\in D}(y-x+\mathcal{C})\supset \mathcal{C}'_a\implies T_{y-x+\mathcal{C}}\le T_{\mathcal{C}'_a}$
+        $y-x+\mathcal{C}\supset \mathcal{C}'_a\implies T_{y-x+\mathcal{C}}\le T_{\mathcal{C}'_a}$
     \end{itemize}
-     より $\Forall x\in D$ に対し $\abs{y-x}$ を十分小さくとると，$\Forall \eta>0$ に対し
+     より $\Forall \beta>0, \Forall \eta>0, \Exists \alpha>0$ s.t. $\abs{y-x}<\alpha$ とすると
      \begin{align}
          P_x(T\le\eta)
          &\ge P_x(T_{y+\mathcal{C}}\le\eta) \\
          &= P_0(T_{y-x+\mathcal{C}}\le\eta) \\
          &\ge P_0(T_{\mathcal{C}'_a}\le\eta)
-         \ge 1-\beta.
+         \ge 1-\beta
+         \implies P_x(T>\eta)<\beta.
      \end{align}
-     $$
-     \therefore 
-     \lim_{x\to y, x\in D}P_x(T>\eta)<\beta.
-     $$
 
-     $\beta$ の任意性より $\lim_{x\to y, x\in D}P_x(T>\eta)=0.$
+     ここで
+     $$
+     P_x(T>\eta)
+     \le \limsup_{x\to y, x\in D}P_x(T>\eta)
+     (= \lim_{\alpha\downarrow0}\sup_{\abs{y-x}<\alpha}P_x(T>\eta))
+     <\beta
+     $$
+     より $\beta$ の任意性から $\limsup_{x\to y, x\in D}P_x(T>\eta)=0.$
+     同様に $\liminf_{x\to y, x\in D}P_x(T>\eta)=0$ が言えるので，$P_x(T>\eta)$ の極限値が存在することが言え，$\lim_{x\to y, x\in D}P_x(T>\eta)=0.$
 \end{proof}
 
 
