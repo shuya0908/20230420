@@ -1,0 +1,439 @@
+\documentclass{jsarticle}
+%DIF LATEXDIFF DIFFERENCE FILE
+%DIF DEL draft.tex      Sun Apr 23 15:58:05 2023
+%DIF ADD revision.tex   Sun Apr 23 18:05:08 2023
+% \documentclass[b4paper,landscape,14pt]{jsarticle}
+\title{}
+\author{}
+\date{
+% \number\year 年 \number\month 月
+}
+\usepackage{fenrir_v1_4_0}
+\usepackage{ethm_v1_1_0}
+\mathtoolsset{showonlyrefs=true}
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+\providecommand{\DIFmodbegin}{} %DIF PREAMBLE
+\providecommand{\DIFmodend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+%DIF COLORLISTINGS PREAMBLE %DIF PREAMBLE
+\RequirePackage{listings} %DIF PREAMBLE
+\RequirePackage{color} %DIF PREAMBLE
+\lstdefinelanguage{DIFcode}{ %DIF PREAMBLE
+%DIF DIFCODE_UNDERLINE %DIF PREAMBLE
+  moredelim=[il][\color{red}\sout]{\%DIF\ <\ }, %DIF PREAMBLE
+  moredelim=[il][\color{blue}\uwave]{\%DIF\ >\ } %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstdefinestyle{DIFverbatimstyle}{ %DIF PREAMBLE
+	language=DIFcode, %DIF PREAMBLE
+	basicstyle=\ttfamily, %DIF PREAMBLE
+	columns=fullflexible, %DIF PREAMBLE
+	keepspaces=true %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim}{\lstset{style=DIFverbatimstyle}}{} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim*}{\lstset{style=DIFverbatimstyle,showspaces=true}}{} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
+
+\begin{document}
+% \maketitle
+\setcounter{section}{6}
+\section{Brownian Motion and Partial Differential Equations}
+\setcounter{subsection}{1}
+\subsection{Brownian Motion and Harmonic Functions}
+
+Proposition 7.7の(i)より境界条件 $g$ を満たすDirichlet問題の解が存在すれば，それは確率論的(probabilistic)な式 $u(x)=E_x[g(B_T)]$ で与えられることがわかる．
+一方，$\partial D$ 上の（有界可測）関数 $g$ の選び方によらず，(ii)より確率論的な式は $D$ 上調和的な関数 $u$ を生み出すことがわかる．
+たとえ $g$ に連続性が仮定されたとしても，関数 $u$ が境界条件 $g$ を満たすことは明らかではなく，また一般的に\DIFdelbegin \DIFdel{$g$ の連続性}\DIFdelend \DIFaddbegin \DIFadd{境界条件を満たすと}\DIFaddend は\DIFdelbegin \DIFdel{不要}\DIFdelend \DIFaddbegin \DIFadd{限らない}\DIFaddend （Exercise 7.24, 7.25参照，解をもたないDirichlet問題の例）．
+
+\begin{shadebox}
+    \begin{df*}
+        $y\in\partial D$ とする．
+
+        $D$ が $y$ における\textbf{外部錐条件 (exterior cone condition\DIFdelbegin \DIFdel{, Zaremba's cone condition}\DIFdelend )}を満たす
+
+        $\darrow$
+        $\Exists \mathcal{C}(\neq\0)$：頂点 $y$ の開錐, $\Exists r>0$ s.t. 
+        
+        \DIFdelbegin \DIFdel{$\mathcal{C}\cap \mathcal{B}_r(y)\subset D^c.$
+    }\DIFdelend \DIFaddbegin \DIFadd{$\mathcal{C}\cap (y+\mathcal{B}_r)\subset D^c$（$\mathcal{B}_{r}=\set{z\in\real^d}{\abs{z}<r}$）．
+    }\DIFaddend \end{df*}
+\end{shadebox}
+
+\begin{ex*}
+    凸領域は境界に含まれる任意の点において(ECC)を満たす．
+\end{ex*}
+
+
+\setcounter{thm}{8}
+\begin{shadebox}
+    \begin{lem}\label{thm:709}~
+        \begin{itemize}
+            \item $D\subset \real^d$：$\Forall y\in\partial D$ において(ECC)を満たす有界領域
+            \item $T=\inf\set{t\ge0}{B_t\notin D}$
+        \end{itemize}
+
+        $\implies \Forall \eta>0$ に対し $\lim_{x\to y, x\in D}P_x(T>\eta) = 0.$
+    \end{lem}
+\end{shadebox}
+
+\begin{proof}
+    $\Forall u\in\real^d$ with $\abs{u}=1, \Forall \gamma\in(0, 1)$ に対し，原点頂点の開円錐
+    \begin{align}
+        \mathcal{C}(u, \gamma)
+        := \set{z\in\real^d}{z\cdot u>(1-\gamma)\abs{z}}
+    \end{align}
+    を考える．
+\DIFaddbegin 
+
+    \begin{screen}
+        \DIFadd{$\because)$ $\mathcal{C}(u, \gamma)$ が開円錐となること：
+        }\begin{itemize}
+            \item \DIFadd{$\theta_{\gamma}$：（$u$ を対称軸とする）$\mathcal{C}(u, \gamma)$ の半頂角
+            }\item \DIFadd{$\phi_z$：対象軸と $z$ のなす角
+        }\end{itemize}
+        \DIFadd{とする．
+        $\theta_{\gamma}:=1-\gamma$ と定めると $\theta_{\gamma}\in(0, \pi/2).$
+        $\mathcal{C}(u, \gamma)$ の定め方より $\abs{z}\neq0$ であるため，
+        }\begin{align}
+            \DIFadd{z\cdot u>(1-\gamma)\abs{z}
+            }&\DIFadd{\implies \abs{z}\cos\phi_z > \abs{z}\cos\theta_{\gamma} }\\
+            &\DIFadd{\implies \cos\phi_z > \cos\theta_{\gamma} }\\
+            &\DIFadd{\implies \phi_z < \theta_{\gamma}.
+        }\end{align}
+
+        \DIFadd{ゆえに $\mathcal{C}(u, \gamma)$ は対称軸 $u$，半頂角 $\theta_{\gamma}=\cos^{-1}(1-\gamma)$ の開円錐となる．
+    }\end{screen}
+
+    \DIFaddend 与えられた $y\in\partial D$ に対し $r>0, u, \gamma$ を
+    \begin{align}
+        y+(\mathcal{C}(u, \gamma)\cap\mathcal{B}_{r})\subset D^c
+    \end{align}
+    を満たすように固定すると，$D$ は(ECC)を満たす\DIFdelbegin \DIFdel{（$\mathcal{B}_{r}=\set{z\in\real^d}{\abs{z}<r}$）}\DIFdelend ．
+    ここで
+    \begin{itemize}
+        \item $\mathcal{C}=\mathcal{C}(u, \gamma)\cap\mathcal{B}_{r}$
+        \item $\mathcal{C}'=\mathcal{C}(u, \gamma/2)\cap\mathcal{B}_{r/2}$
+    \end{itemize}
+    と定める．
+
+    \begin{screen}
+        $\because)$
+        $\mathcal{C}(u, \gamma/2)\subset \mathcal{C}(u, \gamma)$ となること：
+        \DIFdelbegin \DIFdel{$1-\gamma/2>1-\gamma$ より
+        }\begin{align*}
+            \DIFdel{z\in\mathcal{C}(u, \gamma/2)
+            }&\DIFdel{\iff z\cdot u>(1-\gamma/2)\abs{z} }\\
+            &\DIFdel{\implies z\cdot u>(1-\gamma)\abs{z} }\\
+            &\DIFdel{\iff z\in\mathcal{C}(u, \gamma).
+        }\end{align*}%DIFAUXCMD
+%DIFDELCMD <     %%%
+\DIFdelend \DIFaddbegin \DIFadd{$\gamma/2<\gamma\implies \theta_{\gamma/2}<\theta_{\gamma}.$
+    }\DIFaddend \end{screen}
+
+    \DIFdelbegin \DIFdel{$\Forall F\subset \real^d$（}\DIFdelend \DIFaddbegin \DIFadd{$\Forall F$：}\DIFaddend 開集合 \DIFdelbegin \DIFdel{）}\DIFdelend \DIFaddbegin \DIFadd{in $\real^d$ }\DIFaddend に対し \DIFdelbegin \DIFdel{$T_F:=\set{t\ge0}{B_t\in F}$ }\DIFdelend \DIFaddbegin \DIFadd{$T_F:=\inf\set{t\ge0}{B_t\in F}$ }\DIFaddend と定める．
+    このとき \DIFdelbegin \DIFdel{$\{T_{\mathcal{C}(u, \gamma/2)}=0\}=\bigcap_{s>0}\UB{\{T_{\mathcal{C}(u, \gamma/2)}<s\}}{\in\clf_s\text{ by Proposition 3.9(i)}}\in\clf_{0+}$ }\DIFdelend \DIFaddbegin \DIFadd{$\{T_{\mathcal{C}'}=0\}=\bigcap_{s>0}\UB{\{T_{\mathcal{C}'}<s\}}{\in\clf_s\text{ by Proposition 3.9(i)}}\in\clf_{0+}$ }\DIFaddend に注意すると，Blumenthalの0-1法則より
+    \begin{align}
+        P_0(T\DIFdelbegin \DIFdel{_{\mathcal{C}(u, \gamma/2)}}\DIFdelend \DIFaddbegin \DIFadd{_{\mathcal{C}'}}\DIFaddend =0)
+        &= \lim_{s\downarrow0}P_0(T\DIFdelbegin \DIFdel{_{\mathcal{C}(u, \gamma/2)}<s)}\DIFdelend \\
+        &\DIFdelbegin \DIFdel{\ge \lim_{s\downarrow0}P_0(B_s\in\mathcal{C}(u, \gamma/2))>}\DIFdelend \DIFaddbegin \DIFadd{_{\mathcal{C}'}<s)}\DIFaddend \\
+        &\DIFaddbegin \DIFadd{\ge \lim_{s\downarrow0}P_0(B_s\in\mathcal{C}')
+        \ge \lim_{s\downarrow0}q
+        >}\DIFaddend 0.
+    \end{align}
+    \begin{gather}
+        \therefore 
+        P_0(T\DIFdelbegin \DIFdel{_{\mathcal{C}(u, \gamma/2)}}\DIFdelend \DIFaddbegin \DIFadd{_{\mathcal{C}'}}\DIFaddend =0) = 1.
+    \end{gather}
+
+    \begin{screen}
+        $\because)$
+        \begin{align}
+            P_0(B_s\in\mathcal{C}\DIFaddbegin \DIFadd{')
+            = P_0}\DIFaddend (\DIFdelbegin \DIFdel{u, \gamma/2}\DIFdelend \DIFaddbegin \DIFadd{B_1\in\frac{1}{\sqrt{s}}\mathcal{C}'}\DIFaddend )
+            \DIFdelbegin \DIFdel{)
+            }\DIFdelend &\DIFdelbegin \DIFdel{= \int_{\mathcal{C}(u, \gamma/2)}\frac{1}{(2\pi s)^{d/2}}\exp{\left(-\frac{\abs{y}^2}{2s}\right)}dy }\DIFdelend \DIFaddbegin \ge \DIFadd{P_0(B_1\in\mathcal{C}') }\DIFaddend \\
+            &= \int\DIFdelbegin \DIFdel{_{\mathcal{C}(u, \gamma/2)}}\DIFdelend \DIFaddbegin \DIFadd{_{\mathcal{C}'}}\DIFaddend \frac{1}{(2\pi)^{d/2}}\DIFdelbegin \DIFdel{\exp{\left(-\frac{\abs{z}^2}{2}\right)}dz > 0.
+        }\DIFdelend  \\
+        &\DIFaddbegin \DIFadd{\exp{\left(-\frac{\abs{y}^2}{2}\right)}dy =: q\text{（$s$ に依らない正定数）}.
+        }\DIFaddend \end{align}
+    \end{screen}
+
+    \DIFdelbegin \DIFdel{これとサンプルパスの連続性より $P_0(T_{\mathcal{C}'}=0) = 1$ なので }\DIFdelend \DIFaddbegin \DIFadd{ゆえに }\DIFaddend $T_{\mathcal{C}'}=0, P_0$-a.s.
+\DIFdelbegin %DIFDELCMD < \nazo
+%DIFDELCMD < %%%
+\DIFdelend 
+
+    一方 $\Forall a\in(0, r/2)$ に対し
+    \begin{align}
+        \mathcal{C}'_a
+        := \set{z\in\mathcal{C}'}{\abs{z}>a}
+        = \mathcal{C}'\setminus \bar{\mathcal{B}_{a}}
+        (\subset \mathcal{C}')
+    \end{align}
+    と定める．
+    定め方より $\lim_{a\downarrow0}\uparrow\mathcal{C}'_a=\mathcal{C}'\implies \lim_{a\downarrow0}\downarrow T_{\mathcal{C}'_a}=T_{\mathcal{C}'}=0, P_0$-a.s.（対象の集合が大きくなると，より小さな時間で到達するイメージ）
+
+    ゆえに 
+    \begin{align}
+        \Forall \DIFdelbegin \DIFdel{\eta>0, }%DIFDELCMD < \Exists %%%
+\DIFdel{\alpha>0\text{ s.t. }
+        }%DIFDELCMD < & %%%
+\DIFdel{a<\alpha}%DIFDELCMD < \implies %%%
+\DIFdel{P_0(T_{\mathcal{C}'_a}}%DIFDELCMD < \le%%%
+\DIFdel{\eta)=1 }%DIFDELCMD < \\
+%DIFDELCMD <         \implies 
+%DIFDELCMD <         \Forall %%%
+\DIFdelend \beta>0, \Forall \eta>0, \Exists \DIFdelbegin \DIFdel{\alpha}\DIFdelend \DIFaddbegin \tilde{a}\DIFaddend >0\text{ s.t. }
+         \DIFdelbegin %DIFDELCMD < & %%%
+\DIFdelend a<\DIFdelbegin \DIFdel{\alpha}\DIFdelend \DIFaddbegin \tilde{a}\DIFaddend \implies P_0(T_{\mathcal{C}'_a}\le\eta)\ge1-\beta.
+    \end{align}
+
+    この $a$ を固定する．
+    ここで \DIFdelbegin %DIFDELCMD < \begin{itemize}
+\begin{itemize}%DIFAUXCMD
+%DIFDELCMD <         \item 
+\item%DIFAUXCMD
+%DIFDELCMD <         %%%
+\DIFdel{$y+\mathcal{C}\subset D^c\implies T(=T_{D^c})\le T_{y+\mathcal{C}}$
+        }%DIFDELCMD < \item
+\item%DIFAUXCMD
+%DIFDELCMD <         %%%
+\DIFdel{$\lim_{x\to y, x\in D}(y-x+\mathcal{C})\supset \mathcal{C}'_a\implies T_{y-x+\mathcal{C}}\le T_{\mathcal{C}'_a}$
+    }
+\end{itemize}%DIFAUXCMD
+%DIFDELCMD < \end{itemize}
+%DIFDELCMD <      %%%
+\DIFdel{より $\Forall x\in D$ に対し }\DIFdelend $\abs{y-x}$ を十分小さくとると
+    \DIFdelbegin \DIFdel{，$\Forall \eta>0$ に対し
+     }\DIFdelend \DIFaddbegin \begin{itemize}
+        \item 
+        \DIFadd{$y+\mathcal{C}\subset D^c\implies T(=T_{D^c})\le T_{y+\mathcal{C}}$
+        }\item
+        \DIFadd{$y-x+\mathcal{C}\supset \mathcal{C}'_a\implies T_{y-x+\mathcal{C}}\le T_{\mathcal{C}'_a}$
+    }\end{itemize}
+     \DIFadd{より $\Forall \beta>0, \Forall \eta>0, \Exists \alpha>0$ s.t. $\abs{y-x}<\alpha$ とすると
+     }\DIFaddend \begin{align}
+         P_x(T\le\eta)
+         &\ge P_x(T_{y+\mathcal{C}}\le\eta) \\
+         &= P_0(T_{y-x+\mathcal{C}}\le\eta) \\
+         &\ge P_0(T_{\mathcal{C}'_a}\le\eta)
+         \ge 1-\beta
+         \DIFaddbegin \implies \DIFadd{P_x(T>\eta)<\beta}\DIFaddend .
+     \end{align}
+\DIFdelbegin \begin{displaymath}
+     \DIFdel{\therefore 
+     \lim_{x\to y, x\in D}P_x(T>\eta)<\beta.
+     }\end{displaymath}%DIFAUXCMD
+\DIFdelend 
+
+     \DIFaddbegin \DIFadd{ここで
+     }$$
+     \DIFadd{P_x(T>\eta)
+     \le \limsup_{x\to y, x\in D}P_x(T>\eta)
+     (= \lim_{\alpha\downarrow0}\sup_{\abs{y-x}<\alpha}P_x(T>\eta))
+     <\beta
+     }$$
+     \DIFadd{より }\DIFaddend $\beta$ の任意性\DIFdelbegin \DIFdel{より }\DIFdelend \DIFaddbegin \DIFadd{から $\limsup_{x\to y, x\in D}P_x(T>\eta)=0.$
+     同様に $\liminf_{x\to y, x\in D}P_x(T>\eta)=0$ が言えるので，$P_x(T>\eta)$ の極限値が存在することが言え，}\DIFaddend $\lim_{x\to y, x\in D}P_x(T>\eta)=0.$
+\end{proof}
+
+
+\begin{shadebox}
+    \setcounter{thm}{7}
+    \begin{thm}[Dirichlet問題の解]\label{thm:708}
+        直前のLemmaと同じ条件を仮定
+
+        $\implies \Forall g$：連続 on $\partial D, u(x) = E_x[g(B_T)]$ は境界条件 $g$ をみたすDirichlet問題の唯一解を与える．
+    \end{thm}
+\end{shadebox}
+
+\begin{proof}
+    $\Forall y\in\partial D$：固定
+
+    $g$：有界可測 on $\partial D$ なので，Proposition 7.7(ii)より $u$ は $D$ 上調和的．
+    よって
+    \setcounter{equation}{1}
+    \begin{align}\label{eq:702}
+        \lim_{x\to y, x\in D}u(x)
+        = g(y)
+    \end{align}
+    が示せれば結論が言える．
+
+    $\ep>0$ とする．
+    $g$：有界連続 on $\partial D$ より
+    \begin{itemize}
+        \item 
+        $\Forall \ep>0, \Exists \delta>0\text{ s.t. }\Forall z\in\partial D, \abs{z-y}<\delta\implies \abs{g(z)-g(y)}<\ep/3.$
+        \item
+        $\Exists M>0$ s.t. $\sup_{z\in\partial D}\abs{g(z)}\le M.$
+    \end{itemize}
+
+    \DIFdelbegin \DIFdel{$\implies\Forall x\in D$ }\DIFdelend \DIFaddbegin \DIFadd{$\implies\Forall \eta>0$ }\DIFaddend に対し $\abs{y-x}<\alpha(\in(0,\delta/2])$ とすると
+    \DIFdelbegin \DIFdel{$\Forall \eta>0$ に対し
+    }\DIFdelend \begin{align}
+        \abs{u(x)-g(y)}
+        &= \abs{E_x[g(B_T)-g(y)]} \\
+        &\le E_x[\abs{g(B_T)-g(y)}\bm{1}_{\{T\le\eta\}}]
+        + E_x[\abs{g(B_T)-g(y)}\bm{1}_{\{T>\eta\}}] \\
+        &\le 
+        \begin{multlined}[t]
+            E_x[\abs{g(B_T)-g(y)}\bm{1}_{\{T\le\eta\}}\bm{1}_{\{\sup_{t\le\eta}\abs{B_t-x}\le\delta/2\}}] \\
+            + E_x[\abs{g(B_T)-g(y)}\bm{1}_{\{\sup_{t\le\eta}\abs{B_t-x}>\delta/2\}}]
+            + E_x[\abs{g(B_T)-g(y)}\bm{1}_{\{T>\eta\}}]
+        \end{multlined} \\
+        &\le 
+        \begin{multlined}[t]
+            E_x[\abs{g(B_T)-g(y)}\bm{1}_{\{T\le\eta\}\cap\{\sup_{t\le\eta}\abs{B_t-x}\le\delta/2\}}] \\
+            + 2MP_x(\sup_{t\le\eta}\abs{B_t-x}>\delta/2)
+            + 2MP_x(T>\eta)
+        \end{multlined}\\
+        &=: A_1+A_2+A_3
+        < \ep/3 + \ep/3 + \ep/3 < \ep.
+    \end{align}
+
+    \begin{screen}
+        $\because)$
+        \begin{enumerate}[label=(\roman*)]
+            \item 
+            事象
+            $$
+            \{T\le\eta\}\cap\{\sup_{t\le\eta}\abs{B_t-x}\le\delta/2\}
+            $$
+            の上では
+            \begin{align}
+                \abs{B_T-y}
+                &\le \abs{B_T-x}+\abs{y-x} \\
+                &\DIFdelbegin %DIFDELCMD < \le %%%
+\DIFdelend \DIFaddbegin \DIFadd{< }\DIFaddend \sup_{t\le\eta}\abs{B_t-x}+\alpha \\
+                &\le \delta/2+\delta/2
+                =\delta
+            \end{align}
+            が成り立つので，$\delta$ の選び方より \DIFdelbegin \DIFdel{$A_1\le\ep/3.$
+            }\DIFdelend \DIFaddbegin \DIFadd{$A_1<\ep/3.$
+            }\DIFaddend \item
+            BMの平行移動不変性より
+            \begin{align}
+                A_2
+                &= 2MP_x(\sup_{t\le\eta}\abs{B_t-x}>\delta/2) \\
+                &= 2MP_0(\sup_{t\le\eta}\abs{B_t}>\delta/2).
+            \end{align}
+
+            ここで，サンプルパスの連続性より $\lim_{\eta\downarrow0}\sup_{t\le\eta}\abs{B_t}=0$ となるので，$P_0(\sup_{t\le\eta}\abs{B_t}>\delta/2)<\ep/6M$ を満たすように $\eta>0$ を固定すると $A_2<\ep/3.$
+            \item
+            Lemma \ref{thm:709}より $\Forall \eta>0$ に対し $P_x(T>\eta)<\ep/6M$ を満たすように \DIFaddbegin \DIFadd{$\abs{y-x}$ を抑える }\DIFaddend $\alpha$ をとることができ，このとき $A_3<\ep/3.$
+        \end{enumerate}
+    \end{screen}
+
+    以上より \DIFdelbegin \DIFdel{$\Forall \ep>0, \Exists \alpha\text{ s.t. }\Forall x\in D,\abs{x-y}<\alpha\implies \abs{u(x)-g(y)}$ }\DIFdelend 
+    
+    \DIFaddbegin \DIFadd{$\Forall \ep>0, \Exists \alpha>0\text{ s.t. }\abs{x-y}<\alpha\implies \abs{u(x)-g(y)}<\ep$ }\DIFaddend が言えたので\eqref{eq:702}が示せた．
+\end{proof}
+
+
+\begin{remark*}
+    (ECC)はDirichlet問題の解の存在性（及び一意性）に対する十分条件に過ぎない．
+    任意の連続境界値に対する解の存在を保証する必要十分条件については，例えば[69]を参照せよ\footnote{69. Port, S.C., Stone, C.J.: Brownian Motion and Classical Potential Theory. Academic Press, New York (1978) (\url{https://www.sciencedirect.com/book/9780125618502/brownian-motion-and-classical-potential-theory})}．
+\end{remark*}
+
+
+\subsection{Harmonic Functions in a Ball and the Poisson Kernel}
+
+\begin{itemize}
+    \item 
+    $D\subset \real^d$：有界領域
+    \item
+    $g$：連続関数 on $\partial D$
+    \item
+    $T=\inf\set{t\ge0}{B_t\notin D}$：BMの $D$ の脱出時刻
+\end{itemize}
+
+Proposition 7.7(i)より境界条件 $g$ を満たすDirichlet問題の $D$ における解がTheorem \ref{thm:708}の条件下で存在すると仮定すると，それは
+$$
+u(x)
+= E_x[g(B_T)]
+= \int_{\partial D}\omega(x, dy)g(y)
+$$
+で与えられる．
+ただし $\omega(x, dy)$ は $\Forall x\in D$ に対し 
+$$
+\omega(x, dy)
+:= P_x(B_T\in dy)
+$$
+で定義され，これは $\partial D$ 上の確率測度となる．
+この測度を\textbf{$x$ に関連する $D$ の調和測度 (harmonic measure of $D$ related to $x$)}という．
+
+\begin{screen}
+    $\because)$
+    $\omega(x, \cdot)$ が確率測度 on $\partial D$ であること：
+    \begin{enumerate}[label=(\roman*)]
+        \item
+        $\omega(x, \partial D)=P_x(B_T\in \partial D)=1.$
+        \item
+        $\{A_n\}_{n\ge1}\subset \partial D$ に対し
+        \begin{align}
+            \omega(x, \bigcup_{n\ge1}A_n)
+            &= P_x(B_T\in \bigcup_{n\ge1}A_n) \\
+            &= P_x(\bigcup_{n\ge1}\{B_T\in A_n\}) \\
+            &= \sum_{n\ge1}P_x(B_T\in A_n) \\
+            &= \sum_{n\ge1}\omega(x, A_n).
+        \end{align}
+    \end{enumerate}
+\end{screen}
+
+一般的に測度 $\omega(x, dy)$ の明示的な表現は見つけることができない．
+$D$ が球の場合には，このような明示的表現が可能であることがわかり，この表現によってDirichlet問題の解の表現はより具体的になる．
+
+\DIFaddbegin \begin{screen}
+    \DIFadd{$\because)$
+    Theorem 7.14より $D=\clb_1$ のとき
+    }$$
+    \DIFadd{\omega(x, dy)
+    = K(x, y)\sigma_1(dy)
+    }$$
+    \DIFadd{と表せる．
+    ただし
+    }\begin{itemize}
+        \item \DIFadd{$K$：Poisson核（Definition \ref{thm:710}参照）
+        }\item \DIFadd{$\sigma_1$：単位球面 $\partial\clb_1$ 上の一様分布を与える確率測度
+    }\end{itemize}
+\end{screen}
+
+\DIFaddend これ以降
+\begin{itemize}
+    \item $d\ge2$
+    \item $D=\clb_1(=\set{z\in\real^d}{\abs{z}<1})$
+    \item $\partial \clb_1$：単位球面 in $\real^d$
+\end{itemize}
+とする．
+
+\begin{shadebox}
+    \DIFaddbegin \setcounter{thm}{9}
+    \DIFaddend \begin{df}\DIFaddbegin \label{thm:710}
+        \DIFaddend （単位球の）\textbf{Poisson核 (Poisson kernel)}
+        $\darrow$
+        $\Forall x\in\clb_1, \Forall y\in\partial\clb_1$ に対し
+        $$
+        K(x, y)
+        = \frac{1-\abs{x}^2}{\abs{y-x}^d}
+        $$
+        で定まる関数 \DIFdelbegin \DIFdel{$K:\clb_1\times\partial\clb_1\to\real.$
+    }\DIFdelend \DIFaddbegin \DIFadd{$K$ on $\clb_1\times\partial\clb_1.$
+    }\DIFaddend \end{df}
+\end{shadebox}
+
+\end{document}
